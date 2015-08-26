@@ -1,0 +1,1 @@
+CREATE TABLE respuestas(mensajes varchar(50),minutos varchar(50),plan varchar(50));

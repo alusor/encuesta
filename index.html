@@ -4,11 +4,66 @@
 	<meta charset="UTF-8">
 	<title>Encuesta</title>
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
+	<link rel="stylesheet" href="css/style.css">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	  <link rel="stylesheet" href="js/send.js">
+	  <script>
+		  function sendData(p1,p2,p3){
+	var p = {
+		"p1" : p1,
+		"p2" : p2,
+		"p3" : p3,
+	};
+	$.ajax({
+		data:p,
+		url: 'sendData.php',
+		type: 'post',
+		success: function(response){
+			$("#res").html(response);	
+		} 
+	});
+}
+	  </script>
+
 </head>
-<body>
-	
+<body class="red darken-4">
+	<main>
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<div class="card">
+						<div class="card-content" id="res"> 
+					<div class="row">
+						<span class="card-title pink-text text-darken-2"><h3 class="center-align pink-text text-darken-2">Gastos promedio en telefonia.</h3></span>
+						<div class="input-field col s12">
+							<input placeholder="12 Mensajes." id="p1" type="text" class="validate">
+          					<label for="first_name">Cuantos mensajes envias en promedio a la semana?</label>
+						</div>
+						<div class="input-field col s12">
+							<input placeholder="Helado de fresa." id="p2" type="text" class="validate">
+          					<label for="first_name">Cuantos minutos hablar por telefono a la semana?.</label>
+						</div>
+						<div class="input-field col s12">
+							<input placeholder="2344" id="p3" type="text" class="validate">
+          					<label for="first_name">Si tienes plan, cuanto pagas mensualmente?.</label>
+						</div>
+						<div class="col s12 center-align">
+							<button class="btn waves-effect waves-light " type="submit" onclick="sendData($('#p1').val(), $('#p2').val(),$('#p3').val());return false;">Enviar <i class="material-icons white-text">send</i>
+							</button>
+							
+						</div>
+					</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</main>
 </body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
 </html>
